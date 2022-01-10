@@ -5,6 +5,9 @@
 
 因JavaScript是单线程的语言，在执行耗时任务时会阻塞主线程，为了能够执行后面的代码，JavaScript引入了异步任务，以减少阻塞情况。事件循环机制很好的实现了JavaScript的异步任务。<br />​<br />
 # 思维导图
+
+![https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d923258f800b4252985255b9be550583~tplv-k3u1fbpfcp-watermark.awebp]()
+
 # 浏览器事件循环
 事件循环是一个在JS引擎中**等待任务**、**执行任务**、**休眠**这三个状态中进行无线循环转换的过程。<br />以下为事件循环执行流程：<br />​<br />
 
@@ -15,7 +18,7 @@
 - 如果下一个任务到来时，上一个任务还没执行完，则任务会放到一个队列中进行等待
 2. 执行完任务，进入休眠状态，转入第1步。
 
-​
+
 
 整体事件循环示意图如下：<br />![image.png](https://cdn.nlark.com/yuque/0/2021/png/743297/1632065997339-37b3b21f-4581-4e6e-8776-666c4af4f48d.png#clientId=u6a429825-c993-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=624&id=u6744e03c&margin=%5Bobject%20Object%5D&name=image.png&originHeight=402&originWidth=477&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16575&status=done&style=none&taskId=u2f91db53-1e5d-4f37-8758-492327ccbff&title=&width=740.5)
 ## 宏任务
@@ -36,7 +39,7 @@
 - MutationObserver
 > 微任务会在执行任何其他事件处理，或渲染，或执行任何其他宏任务之前完成。
 
-​<br />
+<br />
 ## 实例分析
 **示例1**
 ```javascript
@@ -58,7 +61,7 @@ alert("code");
 1. promise 第二个出现，因为 then 会通过微任务队列，并在当前代码之后执行。
 1. timeout 最后显示，因为它是一个宏任务。
 
-​
+
 
 **实例2**
 ```javascript
@@ -87,7 +90,7 @@ setTimeout(()=>{
 - 在执行宏任务 setTimeout1 时会生成微任务 Promise2 ，放入微任务队列中，接着先去清空微任务队列中的所有任务，输出 Promise2
 - 清空完微任务队列中的所有任务后，就又会去宏任务队列取一个，这回执行的是 setTimeout2
 
-​
+
 
 **实例3**<br />async/await执行顺序
 ```javascript
@@ -441,7 +444,7 @@ node事件循环结构图<br />![image.png](https://cdn.nlark.com/yuque/0/2021/p
 - check，检查阶段，执行setImmediate的回调
 - close callbacks，关闭回调阶段，执行相关关闭的回调，例如socket.on('close', () => {...})
 
-​
+
 
 ### **setImmediate和process.nextTick的区别**
 
@@ -450,14 +453,14 @@ node事件循环结构图<br />![image.png](https://cdn.nlark.com/yuque/0/2021/p
 在一次事件循环结束之后执行setImmediate
 > 与setTimeout的区别是，setTimeout是指定的时间到了就执行
 
-​<br />
+<br />
 
 - **process.nextTick**
 
 在下一个宏任务之前执行
 > 与setImmediate的区别是，setImmediate在一次事件循环结束之后执行
 
-​<br />
+<br />
 ## Node中的宏任务
 
 - IO操作
